@@ -19,6 +19,8 @@ public class RecipeService {
         RecipeEntity recipeEntity = new RecipeEntity();
         recipeEntity.setName(recipe.getName());
         recipeEntity.setDescription(recipe.getDescription());
+        recipeEntity.setInstructions(recipe.getInstructions());
+        recipeEntity.setImagePath(recipe.getImagePath());
 
         recipeRepository.save(recipeEntity);
     }
@@ -28,7 +30,13 @@ public class RecipeService {
 
         ArrayList<RecipeDto> recipeList = new ArrayList<>();
         for (RecipeEntity recipeEntity : allRecipes) {
-            recipeList.add(new RecipeDto(recipeEntity.getName(), recipeEntity.getDescription()));
+            RecipeDto recipeDto = new RecipeDto();
+            recipeDto.setName(recipeEntity.getName());
+            recipeDto.setDescription(recipeEntity.getDescription());
+            recipeDto.setInstructions(recipeEntity.getInstructions());
+            recipeDto.setImagePath(recipeEntity.getImagePath());
+
+            recipeList.add(recipeDto);
         }
 
         return recipeList;
