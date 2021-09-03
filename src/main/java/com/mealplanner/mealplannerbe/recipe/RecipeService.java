@@ -31,6 +31,7 @@ public class RecipeService {
         ArrayList<RecipeDto> recipeList = new ArrayList<>();
         for (RecipeEntity recipeEntity : allRecipes) {
             RecipeDto recipeDto = new RecipeDto();
+            recipeDto.setId(recipeEntity.getId());
             recipeDto.setName(recipeEntity.getName());
             recipeDto.setDescription(recipeEntity.getDescription());
             recipeDto.setInstructions(recipeEntity.getInstructions());

@@ -2,12 +2,14 @@ package com.mealplanner.mealplannerbe.dtos;
 
 public class RecipeDto {
 
+    private Integer id;
     private String name;
     private String description;
     private String instructions;
     private String imagePath;
 
-    public RecipeDto(String name, String description, String instructions, String imagePath) {
+    public RecipeDto(Integer id, String name, String description, String instructions, String imagePath) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.instructions = instructions;
@@ -15,6 +17,14 @@ public class RecipeDto {
     }
 
     public RecipeDto() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
