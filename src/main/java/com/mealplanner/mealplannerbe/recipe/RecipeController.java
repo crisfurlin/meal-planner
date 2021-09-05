@@ -1,5 +1,6 @@
 package com.mealplanner.mealplannerbe.recipe;
 
+import com.mealplanner.mealplannerbe.dtos.IngredientDto;
 import com.mealplanner.mealplannerbe.dtos.RecipeDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

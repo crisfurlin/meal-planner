@@ -1,8 +1,9 @@
 package com.mealplanner.mealplannerbe.recipe;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.mealplanner.mealplannerbe.ingredient.IngredientEntity;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "Recipes")
 public class RecipeEntity {
@@ -13,6 +14,8 @@ public class RecipeEntity {
     private String description;
     private String instructions;
     private String imagePath;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<IngredientEntity> ingredients;
 
     public RecipeEntity(Integer id, String name, String description, String instructions, String imagePath) {
         this.id = id;
@@ -63,6 +66,14 @@ public class RecipeEntity {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public Set<IngredientEntity> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<IngredientEntity> ingredients) {
+        this.ingredients = ingredients;
     }
 }
 

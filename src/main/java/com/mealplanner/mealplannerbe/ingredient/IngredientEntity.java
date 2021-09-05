@@ -1,22 +1,32 @@
-package com.mealplanner.mealplannerbe.dtos;
+package com.mealplanner.mealplannerbe.ingredient;
 
-public class IngredientDto {
+import com.mealplanner.mealplannerbe.recipe.RecipeEntity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity(name = "Ingredients")
+public class IngredientEntity {
+    @Id
+    @GeneratedValue
     private Integer id;
     private String quantity;
     private String unit;
     private String name;
-    private Integer recipeId;
+    @ManyToOne
+    private RecipeEntity recipe;
 
-    public IngredientDto(Integer id, String quantity, String unit, String name, Integer recipeId) {
+    public IngredientEntity(Integer id, String quantity, String unit, String name, RecipeEntity recipe) {
         this.id = id;
         this.quantity = quantity;
         this.unit = unit;
         this.name = name;
-        this.recipeId = recipeId;
+        this.recipe = recipe;
     }
 
-    public IngredientDto() {
+    public IngredientEntity() {
     }
 
     public Integer getId() {
@@ -51,11 +61,13 @@ public class IngredientDto {
         this.name = name;
     }
 
-    public Integer getRecipeId() {
-        return recipeId;
+    public RecipeEntity getRecipe() {
+        return recipe;
     }
 
-    public void setRecipeId(Integer recipeId) {
-        this.recipeId = recipeId;
+    public void setRecipe(RecipeEntity recipe) {
+        this.recipe = recipe;
     }
 }
+
+

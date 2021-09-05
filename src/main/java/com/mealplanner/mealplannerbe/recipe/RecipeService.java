@@ -1,9 +1,12 @@
 package com.mealplanner.mealplannerbe.recipe;
 
+import com.mealplanner.mealplannerbe.dtos.IngredientDto;
 import com.mealplanner.mealplannerbe.dtos.RecipeDto;
+import com.mealplanner.mealplannerbe.ingredient.IngredientEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -22,6 +25,17 @@ public class RecipeService {
         recipeEntity.setInstructions(recipe.getInstructions());
         recipeEntity.setImagePath(recipe.getImagePath());
 
+        HashSet ingredients = new HashSet<IngredientEntity>();
+        for (IngredientDto ingredientDto : recipe.getIngredients()) {
+            IngredientEntity ingredientEntity = new IngredientEntity();
+            ingredientEntity.setQuantity(ingredientDto.getQuantity());
+            ingredientEntity.setUnit(ingredientDto.getUnit());
+            ingredientEntity.setName(ingredientDto.getName());
+            ingredientEntity.setRecipe(recipeEntity);
+            ingredients.add(ingredientEntity);
+        }
+        recipeEntity.setIngredients(ingredients);
+
         recipeRepository.save(recipeEntity);
     }
 
@@ -36,6 +50,19 @@ public class RecipeService {
             recipeDto.setDescription(recipeEntity.getDescription());
             recipeDto.setInstructions(recipeEntity.getInstructions());
             recipeDto.setImagePath(recipeEntity.getImagePath());
+
+            HashSet<IngredientDto> ingredients = new HashSet<>();
+            for (IngredientEntity ingredient : recipeEntity.getIngredients()) {
+                IngredientDto ingredientDto = new IngredientDto();
+                ingredientDto.setQuantity(ingredient.getQuantity());
+                ingredientDto.setUnit(ingredient.getUnit());
+                ingredientDto.setName(ingredient.getName());
+                ingredientDto.setId(ingredient.getId());
+                ingredientDto.setRecipeId(ingredient.getRecipe().getId());
+                ingredients.add(ingredientDto);
+            }
+
+            recipeDto.setIngredients(ingredients);
 
             recipeList.add(recipeDto);
         }
