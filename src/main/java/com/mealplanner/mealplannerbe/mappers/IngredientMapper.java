@@ -26,6 +26,17 @@ public class IngredientMapper implements Mapper<IngredientDto, IngredientEntity>
 
     @Override
     public IngredientDto mapToDto(IngredientEntity ingredientEntity) {
-        return null;
+        if (ingredientEntity == null) {
+            return null;
+        }
+
+        IngredientDto ingredientDto = new IngredientDto();
+        ingredientDto.setQuantity(ingredientEntity.getQuantity());
+        ingredientDto.setUnit(ingredientEntity.getUnit());
+        ingredientDto.setName(ingredientEntity.getName());
+        ingredientDto.setId(ingredientEntity.getId());
+        ingredientDto.setRecipeId(ingredientEntity.getRecipe().getId());
+
+        return ingredientDto;
     }
 }
