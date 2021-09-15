@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class RecipeController {
     }
 
     @GetMapping
-    public List<RecipeDto> recipesList() {
+    public Collection<RecipeDto> recipesList() {
         return recipeService.listAll();
     }
 

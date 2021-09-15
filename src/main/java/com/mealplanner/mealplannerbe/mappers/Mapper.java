@@ -1,15 +1,17 @@
 package com.mealplanner.mealplannerbe.mappers;
 
+import com.mealplanner.mealplannerbe.ingredient.IngredientEntity;
+
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public interface Mapper<DTO, ENTITY> {
 
     ENTITY mapToEntity(DTO dto);
     DTO mapToDto(ENTITY entity);
 
-    default List<ENTITY> mapToEntities(List<DTO> dtos) {
-        ArrayList<ENTITY> entities = new ArrayList<>();
+    default Collection<ENTITY> mapToEntities(Collection<DTO> dtos) {
+        Collection<ENTITY> entities = new ArrayList<>();
         if (dtos == null) {
             return null;
         }
@@ -19,8 +21,8 @@ public interface Mapper<DTO, ENTITY> {
         return entities;
     }
 
-    default List<DTO> mapToDtos(List<ENTITY> entities) {
-        ArrayList<DTO> dtos = new ArrayList<>();
+    default Collection<DTO> mapToDtos(Collection<ENTITY> entities) {
+        Collection<DTO> dtos = new ArrayList<>();
         if (entities == null) {
             return null;
         }

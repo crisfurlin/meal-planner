@@ -3,7 +3,7 @@ package com.mealplanner.mealplannerbe.recipe;
 import com.mealplanner.mealplannerbe.ingredient.IngredientEntity;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.Collection;
 
 @Entity(name = "Recipes")
 public class RecipeEntity {
@@ -15,14 +15,15 @@ public class RecipeEntity {
     private String instructions;
     private String imagePath;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<IngredientEntity> ingredients;
+    private Collection<IngredientEntity> ingredients;
 
-    public RecipeEntity(Integer id, String name, String description, String instructions, String imagePath) {
+    public RecipeEntity(Integer id, String name, String description, String instructions, String imagePath, Collection<IngredientEntity> ingredients) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.instructions = instructions;
         this.imagePath = imagePath;
+        this.ingredients = ingredients;
     }
 
     public RecipeEntity() {
@@ -68,11 +69,11 @@ public class RecipeEntity {
         this.imagePath = imagePath;
     }
 
-    public Set<IngredientEntity> getIngredients() {
+    public Collection<IngredientEntity> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Set<IngredientEntity> ingredients) {
+    public void setIngredients(Collection<IngredientEntity> ingredients) {
         this.ingredients = ingredients;
     }
 }

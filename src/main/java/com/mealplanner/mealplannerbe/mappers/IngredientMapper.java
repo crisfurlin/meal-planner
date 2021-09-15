@@ -3,7 +3,9 @@ package com.mealplanner.mealplannerbe.mappers;
 import com.mealplanner.mealplannerbe.dtos.IngredientDto;
 import com.mealplanner.mealplannerbe.ingredient.IngredientEntity;
 import com.mealplanner.mealplannerbe.recipe.RecipeEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class IngredientMapper implements Mapper<IngredientDto, IngredientEntity>{
 
     @Override

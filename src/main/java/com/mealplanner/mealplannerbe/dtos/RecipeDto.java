@@ -2,6 +2,7 @@ package com.mealplanner.mealplannerbe.dtos;
 
 import com.mealplanner.mealplannerbe.ingredient.IngredientEntity;
 
+import java.util.Collection;
 import java.util.Set;
 
 public class RecipeDto {
@@ -11,9 +12,9 @@ public class RecipeDto {
     private String description;
     private String instructions;
     private String imagePath;
-    private Set<IngredientDto> ingredients;
+    private Collection<IngredientDto> ingredients;
 
-    public RecipeDto(Integer id, String name, String description, String instructions, String imagePath, Set<IngredientDto> ingredients) {
+    public RecipeDto(Integer id, String name, String description, String instructions, String imagePath, Collection<IngredientDto> ingredients) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -65,11 +66,11 @@ public class RecipeDto {
         this.imagePath = imagePath;
     }
 
-    public Set<IngredientDto> getIngredients() {
+    public Collection<IngredientDto> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Set<IngredientDto> ingredients) {
+    public void setIngredients(Collection<IngredientDto> ingredients) {
         this.ingredients = ingredients;
     }
 }

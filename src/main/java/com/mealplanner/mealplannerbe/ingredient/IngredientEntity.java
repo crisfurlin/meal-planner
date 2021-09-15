@@ -2,10 +2,7 @@ package com.mealplanner.mealplannerbe.ingredient;
 
 import com.mealplanner.mealplannerbe.recipe.RecipeEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity(name = "Ingredients")
 public class IngredientEntity {
