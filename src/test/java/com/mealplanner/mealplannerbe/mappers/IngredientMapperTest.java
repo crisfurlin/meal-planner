@@ -72,22 +72,22 @@ public class IngredientMapperTest {
         assertThat(ingredientEntities).isEmpty();
     }
 
-//    @Test
-//    public void it_should_map_ingredient_dtos_to_ingredient_entities() {
-//        //given
-//        ArrayList<IngredientDto> ingredientDtos = new ArrayList<>();
-//        IngredientDto ingredientOne = new IngredientDto(1, "2", "cup", "flour", 5);
-//        IngredientDto ingredientTwo = new IngredientDto(2, "3", "ounces", "butter", 5);
-//        IngredientDto ingredientThree = new IngredientDto(3, "1/2", "tbsp", "baking soda", 5);
-//        ingredientDtos.add(ingredientOne);
-//        ingredientDtos.add(ingredientTwo);
-//        ingredientDtos.add(ingredientThree);
-//        //when
-//        List<IngredientEntity> ingredientEntities = mapper.mapToEntities(ingredientDtos);
-//        //then
-//        assertThat(ingredientEntities)
+    @Test
+    public void it_should_map_ingredient_dtos_to_ingredient_entities() {
+        //given
+        ArrayList<IngredientDto> ingredientDtos = new ArrayList<>();
+        IngredientDto ingredientOne = new IngredientDto(1, "2", "cup", "flour", 5);
+        IngredientDto ingredientTwo = new IngredientDto(2, "3", "ounces", "butter", 5);
+        IngredientDto ingredientThree = new IngredientDto(3, "1/2", "tbsp", "baking soda", 5);
+        ingredientDtos.add(ingredientOne);
+        ingredientDtos.add(ingredientTwo);
+        ingredientDtos.add(ingredientThree);
+        //when
+        List<IngredientEntity> ingredientEntities = mapper.mapToEntities(ingredientDtos);
+        //then
+        assertThat(ingredientEntities).hasSize(3);
 
-//    }
+    }
 
     @Test
     public void it_should_return_null_recipe_entities_if_recipe_dtos_is_null() {
@@ -107,15 +107,21 @@ public class IngredientMapperTest {
         assertThat(ingredientDtos).isEmpty();
     }
 
-//    @Test
-//    public void it_should_map_ingredient_entities_to_ingredient_dtos() {
-//        //given
-//
-//        //when
-//
-//        //then
-//
-//    }
+    @Test
+    public void it_should_map_ingredient_entities_to_ingredient_dtos() {
+        //given
+        ArrayList<IngredientEntity> ingredientEntities = new ArrayList<>();
+        IngredientEntity ingredientOne = new IngredientEntity(1, "2", "cup", "flour", new RecipeEntity(2, "Pancakes", "Fluffy", "Just do it", "www"));
+        IngredientEntity ingredientTwo = new IngredientEntity(2, "3", "ounces", "butter", new RecipeEntity(2, "Pancakes", "Fluffy", "Just do it", "www"));
+        IngredientEntity ingredientThree = new IngredientEntity(3, "1/2", "tbsp", "baking soda", new RecipeEntity(2, "Pancakes", "Fluffy", "Just do it", "www"));
+        ingredientEntities.add(ingredientOne);
+        ingredientEntities.add(ingredientTwo);
+        ingredientEntities.add(ingredientThree);
+        //when
+        List<IngredientDto> ingredientDtos = mapper.mapToDtos(ingredientEntities);
+        //then
+        assertThat(ingredientDtos).hasSize(3);
+    }
 
     @Test
     public void it_should_return_null_recipe_dtos_if_recipe_entities_is_null() {
