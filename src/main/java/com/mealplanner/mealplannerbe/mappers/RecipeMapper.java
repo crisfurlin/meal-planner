@@ -30,6 +30,9 @@ public class RecipeMapper implements Mapper<RecipeDto, RecipeEntity> {
         recipeEntity.setImagePath(recipeDto.getImagePath());
 
         recipeEntity.setIngredients(ingredientMapper.mapToEntities(recipeDto.getIngredients()));
+        for (IngredientEntity ingredient : recipeEntity.getIngredients()) {
+            ingredient.setRecipe(recipeEntity);
+        }
 
         return recipeEntity;
     }

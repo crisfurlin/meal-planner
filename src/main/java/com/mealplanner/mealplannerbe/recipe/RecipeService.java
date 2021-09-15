@@ -25,7 +25,10 @@ public class RecipeService {
     }
 
     public void createRecipe(RecipeDto recipe) {
-        recipeRepository.save(recipeMapper.mapToEntity(recipe));
+        RecipeEntity recipeEntity = recipeMapper.mapToEntity(recipe);
+
+
+        recipeRepository.save(recipeEntity);
     }
 
     public Collection<RecipeDto> listAll() {

@@ -7,7 +7,8 @@ import javax.persistence.*;
 @Entity(name = "Ingredients")
 public class IngredientEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_generator")
+    @SequenceGenerator(name="ingredient_generator", sequenceName = "ingredient_seq", allocationSize=1)
     private Integer id;
     private String quantity;
     private String unit;
