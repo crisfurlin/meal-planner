@@ -8,8 +8,7 @@ import java.util.Collection;
 @Entity(name = "Recipes")
 public class RecipeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_generator")
-    @SequenceGenerator(name="recipe_generator", sequenceName = "recipe_seq", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;
